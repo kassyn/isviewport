@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example jQuery.isViewPort</title>
+	<style>
+		.area {
+			height: 400px;
+			background: #CCC;
+			padding: 10px;
+			margin: 10px;
+		}
+		.change {
+			width: 100px;
+			height: 100px;
+			box-shadow: 3px 4px 2px #111010;
+			background: #c50955;
+			margin: 0 auto;
+			position: relative;
+			top: 40%;
+			text-align: center;
+		}
+		.change.on {
+			-webkit-animation: .5s visible infinite alternate ease-in-out;
+			-moz-animation: .5s visible infinite alternate ease-in-out;
+			animation: .5s visible infinite alternate ease-in-out;
+		}
+		.change span {
+			font-size: 20px;
+			font-family: monospace;
+			position: relative;
+			top: 34px;	
+		}
+		@keyframes visible{
+			0% {
+				margin-top: 0;	
+			}
+			100% {
+				margin-top: 50px;
+			}
+		}
+		@-webkit-keyframes visible{
+			0% {
+				margin-top: 0;	
+			}
+			100% {
+				margin-top: 50px;
+			}
+		}
+		@-moz-keyframes visible{
+			0% {
+				margin-top: 0;	
+			}
+			100% {
+				margin-top: 50px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="area">
+		<div class="change"></div>
+	</section>
+	<section class="area">
+		<div class="change"></div>
+	</section>
+	<section class="area">
+		<div class="change"></div>
+	</section>
+	<section class="area">
+		<div class="change"></div>
+	</section>
+
+	<script src="libs/jquery.min.js"></script>
+	<script src="source/jquery.isviewport.min.js"></script>
+	<script>
+		jQuery('.area').isViewPort({
+			visible : function(rect) {				
+				rect.context
+					.find('.change')
+					.html('<span>show</span>')
+					.addClass('on')
+				;
+			}
+		});
+	</script>
+</body>
+</html>
